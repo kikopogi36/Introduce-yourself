@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get to Know Me</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Verdana', sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        header {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            padding: 20px;
+            width: 80%;
+            max-width: 1200px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            opacity: 0; /* Start as invisible for animation */
+            animation: fadeIn 1s forwards; /* Fade in animation */
+        }
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+        }
+        .intro {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+        }
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            object-fit: cover;
+            margin: 20px 0; /* Added spacing */
+            transition: transform 0.3s; /* Add transition for scaling */
+        }
+        .profile-photo:hover {
+            transform: scale(1.1); /* Scale up on hover */
+        }
+        button {
+            padding: 15px 25px;
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s; /* Add transition for button */
+            margin-top: 20px; /* Added spacing */
+        }
+        button:hover {
+            background-color: #ff4757;
+            transform: scale(1.05); /* Scale up on hover */
+        }
+        .map {
+            flex: 1;
+            height: 400px; /* Increased height for the map */
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+            margin-left: 20px;
+            animation: slideIn 1s forwards; /* Slide-in animation */
+        }
+        video {
+            width: 100%;
+            border-radius: 10px;
+            opacity: 0; /* Start as invisible for animation */
+            animation: fadeIn 1s forwards; /* Fade in animation */
+        }
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+    <script>
+        function showAgeQuiz() {
+            // Create a quiz container
+            const quizContainer = document.createElement('div');
+            quizContainer.innerHTML = `
+                <p>Guess my age:</p>
+                <button id="age20" onclick="checkAnswer(20, this)">20</button>
+                <button id="age21" onclick="checkAnswer(21, this)">21</button>
+                <button id="age22" onclick="checkAnswer(22, this)">22</button>
+                <button id="age23" onclick="checkAnswer(23, this)">23</button>
+            `;
+            document.querySelector('.intro').appendChild(quizContainer);
+        }
+
+        function checkAnswer(age, button) {
+            const correctAge = 21;
+            if (age === correctAge) {
+                button.style.backgroundColor = 'green'; // Change button color to green
+                alert(`Correct! I'm ${correctAge} years old! 🎉\nI was born on May 11, 2003, in Sta. Rosa, Laguna.`);
+            } else {
+                alert(`Wrong!❌ I'm actually 21 years old! \nI was born on May 11, 2003, in Sta. Rosa, Laguna.`);
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#introduction">Home</a>
+            <a href="#location">Where I Live</a>
+            <a href="#hobbies">My Hobby</a>
+        </nav>
+    </header>
+
+    <div class="container" id="introduction">
+        <div class="content">
+            <div class="intro">
+                <h2>Hi, I'm Francis Cayanan!</h2>
+                <img src="profile.jpg" alt="Your Photo" class="profile-photo">
+                <p>Thanks for stopping by! Here's a little bit about me.</p>
+                <div>
+                    <p>Think you can guess my age? Give it a try! 🎯</p>
+                    <button onclick="showAgeQuiz()">Guess My Age?</button>
+                </div>
+            </div>
+            <!-- Location Map -->
+            <iframe 
+                class="map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387194.17918934444!2d121.0333637277977!3d14.599512134191537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33b5ab81ecfb1c7f%3A0x84d39c643f21c2c!2sPasig%20City%2C%20Philippines!5e0!3m2!1sen!2sph!4v1695663483352!5m2!1sen!2sph" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <!-- Hobbies Video -->
+    <div class="container" id="hobbies">
+        <h2>My Hobby:</h2>
+        <video controls>
+            <source src="hobby.mp4" type="video/mp4">
+            Your browser doesn't support this video tag.
+        </video>
+        <p>Check out what I love to do in my free time! 🎥</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Francis Cayanan | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>
